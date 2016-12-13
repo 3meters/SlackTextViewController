@@ -634,12 +634,16 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     if (self.isEditing)
     {
         self.editorContentViewHC.constant = self.editorContentViewHeight;
-        self.leftButtonWC.constant = zero;
-        self.leftButtonHC.constant = zero;
-        self.leftMarginWC.constant = zero;
-        self.bottomMarginWC.constant = zero;
-        self.rightButtonWC.constant = zero;
-        self.rightMarginWC.constant = zero;
+        if (!self.showLeftButtonWhenEditing) {
+            self.leftButtonWC.constant = zero;
+            self.leftButtonHC.constant = zero;
+            self.leftMarginWC.constant = zero;
+        }
+        if (!self.showRightButtonWhenEditing) {
+            self.rightButtonWC.constant = zero;
+            self.rightMarginWC.constant = zero;
+        }
+        //self.bottomMarginWC.constant = zero;
     }
     else {
         self.editorContentViewHC.constant = zero;
